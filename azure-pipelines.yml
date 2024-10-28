@@ -42,7 +42,7 @@ jobs:
         inputs:
           testResultsFiles: "src/reports/junit.xml"
 
-      - task: PublishCodeCoverageResults@1
+      - task: PublishCodeCoverageResults@2
         displayName: "Publish code coverage"
         inputs:
           summaryFileLocation: "src/coverage/cobertura-coverage.xml"
