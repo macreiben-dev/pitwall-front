@@ -14,7 +14,7 @@ variables:
 
 jobs:
   - job: build
-    displayName: "Build Job"
+    displayName: "Continuous integration"
     steps:
       - task: NodeTool@0
         inputs:
@@ -47,3 +47,7 @@ jobs:
         inputs:
           summaryFileLocation: "src/coverage/cobertura-coverage.xml"
           reportDirectory: "src/coverage"
+
+  # - job: continuousDeployment
+  #   displayName: "Continuous deployment"
+  #   steps:
