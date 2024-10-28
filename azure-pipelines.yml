@@ -8,6 +8,9 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+variables:
+  - name: sourceFolder
+    value: "src"
 
 jobs:
   - job: build
@@ -32,3 +35,9 @@ jobs:
           yarn run test
         displayName: "npm test:ci"
         workingDirectory: $(sourceFolder)
+
+      - task: PublishTestResults@2
+        displayName: 'supply npm test results to pipelines'
+        condition: succeededOrFailed() # because otherwise we won't know what tests failed
+        inputs:
+          testResultsFiles: 'src/reports/junit.xml'
