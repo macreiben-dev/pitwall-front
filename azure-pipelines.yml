@@ -48,6 +48,11 @@ jobs:
           summaryFileLocation: "src/coverage/cobertura-coverage.xml"
           reportDirectory: "src/coverage"
 
-  # - job: continuousDeployment
-  #   displayName: "Continuous deployment"
-  #   steps:
+  - job: continuousDeployment
+    displayName: "Continuous deployment"
+    steps:
+      - task: AzureStaticWebApp@0
+        displayName: "Deploy to Azure Static Web Apps"
+        inputs:
+          skip_app_build: true
+          app_location: "$(sourceFolder)/dist"
