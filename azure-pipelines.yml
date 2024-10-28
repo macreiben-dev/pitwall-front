@@ -23,21 +23,21 @@ jobs:
 
       - script: |
           yarn install
-        displayName: "yarn install"
+        displayName: "Install dependencies"
         workingDirectory: $(sourceFolder)
 
       - script: |
           yarn run build
-        displayName: "npm build"
+        displayName: "Build application"
         workingDirectory: $(sourceFolder)
 
       - script: |
-          yarn run test
-        displayName: "npm test:ci"
+          yarn run test:ci
+        displayName: "Run tests"
         workingDirectory: $(sourceFolder)
 
       - task: PublishTestResults@2
-        displayName: 'supply npm test results to pipelines'
+        displayName: 'Publish test results'
         condition: succeededOrFailed() # because otherwise we won't know what tests failed
         inputs:
           testResultsFiles: 'src/reports/junit.xml'
