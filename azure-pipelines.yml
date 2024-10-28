@@ -57,4 +57,4 @@ jobs:
         inputs:
           skip_app_build: true
           app_location: "$(sourceFolder)/dist"
-          deploymentToken: $(Azure_UI_WebApp_DeploymentToken)
+          azure_static_web_apps_api_token: $(Azure_UI_WebApp_DeploymentToken)
