@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 variables:
+  - group: "pitwall-front-variable-group"
   - name: sourceFolder
     value: "src"
 
@@ -56,3 +57,4 @@ jobs:
         inputs:
           skip_app_build: true
           app_location: "$(sourceFolder)/dist"
+          deploymentToken: $(Azure_UI_WebApp_DeploymentToken)
